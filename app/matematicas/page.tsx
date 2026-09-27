@@ -33,15 +33,19 @@ export default function MatematicasPage() {
           </p>
         )}
         {entradas.map((entrada) => (
-          <article key={entrada.slug} className="py-8">
+          <Link
+            key={entrada.slug}
+            href={`/matematicas/${entrada.slug}`}
+            className="block py-8 transition hover:bg-pink-500/5"
+          >
             <time className="font-mono text-xs text-fuchsia-400">
               {entrada.fecha}
             </time>
-            <h2 className="mt-2 font-mono text-2xl font-bold text-text">
+            <h2 className="mt-2 font-mono text-2xl font-bold text-text transition hover:text-pink-300">
               {entrada.titulo}
             </h2>
             <p className="mt-2 text-slate-400">{entrada.resumen}</p>
-          </article>
+          </Link>
         ))}
       </div>
     </main>

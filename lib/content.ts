@@ -39,6 +39,26 @@ export function getEntradas(categoriaSlug: string): Entrada[] {
   return entradas.sort((a, b) => (a.fecha < b.fecha ? 1 : -1));
 }
 
+/** Busca una entrada puntual dentro de una categoría por su slug. */
+export function getEntradaPorSlug(
+  categoriaSlug: string,
+  slug: string
+): Entrada | null {
+  const ruta = path.join(CONTENT_DIR, categoriaSlug, `${slug}.md`);
+  if (!fs.existsSync(ruta)) return null;
+
+  const raw = fs.readFileSync(ruta, "utf-8");
+  const { data, content } = matter(raw);
+
+  return {
+    slug,
+    titulo: (data.titulo as string) ?? slug,
+    fecha: (data.fecha as string) ?? "",
+    resumen: (data.resumen as string) ?? "",
+    contenido: content.trim(),
+  };
+}
+
 /** Cuenta total de entradas across todas las categorías dadas. */
 export function getTotalEntradas(slugs: string[]): number {
   return slugs.reduce((total, slug) => total + getEntradas(slug).length, 0);
