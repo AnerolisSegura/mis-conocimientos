@@ -78,6 +78,14 @@ página dinámica dejó de ser un objeto directo y pasó a ser una `Promise`
 `const { slug } = await params`). Con ese ajuste, la navegación
 lista → entrada individual quedó funcionando.
 
+**Réplica a las 4 categorías restantes**
+Con el patrón de Matemáticas probado (lista + página individual), se
+duplicó tal cual a Física, Programación, Electrónica y Proyectos: mismo
+`page.tsx` y `[slug]/page.tsx`, cambiando solo el slug de la categoría.
+Cada una arrancó con una entrada de ejemplo que explica el sistema de
+contenido, y después se sumó una primera entrada real y específica del
+tema de cada categoría (ver "Contenido publicado hasta ahora" abajo).
+
 ## Contenido publicado hasta ahora
 
 **Matemáticas**
@@ -91,6 +99,35 @@ lista → entrada individual quedó funcionando.
   sin calculadora), y la diferencia entre practicar mucho y practicar de
   forma consciente (revisar el error, identificar el patrón, medir la
   velocidad con el tiempo).
+
+**Física**
+- *Cinemática: el lenguaje del movimiento en mecatrónica* — qué cubre
+  (posición/velocidad/aceleración, MRU/MRUA, movimiento 2D, marcos de
+  referencia), por qué todo sistema mecatrónico que se mueve se modela
+  ahí primero, cómo evitar errores de signo y de unidades, y por qué
+  revisar el orden de magnitud del resultado es la verdadera prueba de
+  haber entendido el problema.
+
+**Programación**
+- *Lógica antes que sintaxis* — qué base de programación se transfiere
+  entre lenguajes (control de flujo, funciones, manejo de datos), por qué
+  en automatización lo que importa es descomponer el proceso antes que
+  memorizar sintaxis, y cómo depurar leyendo el error completo en vez de
+  ir directo a buscar la solución.
+
+**Electrónica**
+- *Circuitos y sensores: la capa física de la mecatrónica* — ley de Ohm,
+  sensores analógicos vs. digitales, microcontroladores básicos; por qué
+  la electrónica es lo que le da al código con qué "sentir" y "actuar"
+  sobre el mundo real, y cómo simular antes de armar para no quemar
+  componentes.
+
+**Proyectos**
+- *SATU-Mecatrónico: por qué documentar un proyecto en curso* — qué es el
+  proyecto de investigación del CEC (un sistema de alerta temprana
+  urbana), por qué integra sensores, electrónica y lógica de software en
+  un solo reto real, y por qué esta categoría va a documentar el proceso
+  completo y no solo el resultado final.
 
 ## Hoja de ruta (paso a paso, un bloque por día)
 
@@ -108,9 +145,8 @@ lista → entrada individual quedó funcionando.
 - [x] `lib/content.ts` lee esa carpeta y arma la lista automáticamente
 - [x] Página individual por entrada (`/matematicas/<slug>`) con Markdown
       renderizado
-- [ ] Conectar Física, Programación, Electrónica y Proyectos igual que
-      Matemáticas (copia `app/matematicas/page.tsx` y
-      `app/matematicas/[slug]/page.tsx`, cambia el slug)
+- [x] Física, Programación, Electrónica y Proyectos conectadas con el
+      mismo patrón (lista + página individual)
 
 **Día 3 — base de datos**
 - Conectar Supabase (o el proveedor que prefieras) para guardar entradas,
