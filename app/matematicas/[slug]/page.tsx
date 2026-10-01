@@ -2,14 +2,14 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { categorias } from "@/data/categorias";
-import { getEntradaPorSlug, getEntradas } from "@/lib/content";
+import { getEntradaPorSlugDB, getEntradasDB } from "@/lib/content-db";
+
 
 const categoria = categorias.find((c) => c.slug === "matematicas")!;
 
-export function generateStaticParams() {
-  return getEntradas(categoria.slug).map((entrada) => ({
-    slug: entrada.slug,
-  }));
+export async function generateStaticParams() {
+  const entradas = await getEntradasDB(categoria.slug);
+  return entradas.map((entrada) => ({ slug: entrada.slug }));
 }
 
 export default async function EntradaPage({
@@ -18,7 +18,7 @@ export default async function EntradaPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const entrada = getEntradaPorSlug(categoria.slug, slug);
+  const entrada = await getEntradaPorSlugDB(categoria.slug, slug);
   if (!entrada) notFound();
 
   return (

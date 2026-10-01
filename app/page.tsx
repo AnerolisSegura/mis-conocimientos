@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { categorias } from "@/data/categorias";
-import { getEntradas, getTotalEntradas } from "@/lib/content";
+import { getEntradas } from "@/lib/content";
+import { getEntradasDB } from "@/lib/content-db";
 
 const glow = [
   "group-hover:border-pink-500/80 group-hover:shadow-[0_0_40px_rgba(236,72,153,0.25)]",
@@ -35,7 +36,7 @@ export default function Home() {
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {categorias.map((cat, i) => {
-          const numEntradas = getEntradas(cat.slug).length;
+          const numEntradas = conteos.find((c) => c.slug === cat.slug)?.count ?? 0;
           return (
             <Link
               key={cat.slug}

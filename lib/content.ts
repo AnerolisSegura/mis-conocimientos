@@ -10,6 +10,7 @@ export type Entrada = {
   fecha: string;
   resumen: string;
   contenido: string;
+  tags: string[];
 };
 
 /**
@@ -33,6 +34,7 @@ export function getEntradas(categoriaSlug: string): Entrada[] {
       fecha: (data.fecha as string) ?? "",
       resumen: (data.resumen as string) ?? "",
       contenido: content.trim(),
+      tags: (data.tags as string[]) ?? [],
     };
   });
 
@@ -56,6 +58,7 @@ export function getEntradaPorSlug(
     fecha: (data.fecha as string) ?? "",
     resumen: (data.resumen as string) ?? "",
     contenido: content.trim(),
+    tags: (data.tags as string[]) ?? [],
   };
 }
 

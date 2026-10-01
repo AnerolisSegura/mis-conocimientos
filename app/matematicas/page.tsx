@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { categorias } from "@/data/categorias";
-import { getEntradas } from "@/lib/content";
+
+// antes: import { getEntradas } from "@/lib/content";
+import { getEntradasDB } from "@/lib/content-db";  
 
 const categoria = categorias.find((c) => c.slug === "matematicas")!;
 
-export default function MatematicasPage() {
-  const entradas = getEntradas(categoria.slug);
-
+// antes: export default function MatematicasPage() {
+//          const entradas = getEntradas(categoria.slug);
+export default async function MatematicasPage() {
+  const entradas = await getEntradasDB(categoria.slug);
+  
   return (
     <main className="relative z-10 mx-auto max-w-3xl px-6 pb-24 pt-16">
       <Link

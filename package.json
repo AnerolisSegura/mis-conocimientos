@@ -2,20 +2,20 @@
   "name": "nodo",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
+  "scripts": { "migrate:matematicas": "node scripts/migrar-matematicas.mjs",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
-  "dependencies": {
+  "dependencies": { "@supabase/supabase-js": "^2.45.4",
     "gray-matter": "^4.0.3",
     "next": "^16.3.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.1"
   },
-  "devDependencies": {
+  "devDependencies": { "dotenv": "^16.4.5",
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20",
     "@types/react": "^18",

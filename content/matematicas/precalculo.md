@@ -2,6 +2,7 @@
 titulo: "Pre-cálculo: la base que sostiene todo"
 fecha: "2026-09-26"
 resumen: "Qué debería cubrir el pre-cálculo, por qué es la base de todo lo que viene después, y cómo entrenar el cálculo mental con práctica consciente."
+tags: ["algebra", "trigonometria", "calculo-mental", "estudio"]
 ---
 
 ## ¿Qué debería cubrir?
