@@ -2,20 +2,22 @@
   "name": "nodo",
   "version": "0.1.0",
   "private": true,
-  "scripts": { "migrate:matematicas": "node scripts/migrar-matematicas.mjs",
+  "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:matematicas": "node scripts/migrar-matematicas.mjs"
   },
-  "dependencies": { "@supabase/supabase-js": "^2.45.4",
+  "dependencies": { 
     "gray-matter": "^4.0.3",
     "next": "^16.3.6",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-markdown": "^9.0.1"
+    "react-markdown": "^9.0.1",
+    "@supabase/supabase-js": "^2.45.4"
   },
-  "devDependencies": { "dotenv": "^16.4.5",
+  "devDependencies": { 
     "@tailwindcss/typography": "^0.5.13",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -23,6 +25,7 @@
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "dotenv": "^16.4.5"
   }
 }

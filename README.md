@@ -33,12 +33,28 @@ titulo: "Límites y continuidad"
 fecha: "2026-09-27"
 resumen: "Repaso de límites laterales y el teorema del valor intermedio."
 ---
-
 Aquí va el contenido completo de la entrada.
 ```
 Guarda el archivo y recarga la página — no hay que tocar código. Cada
 entrada obtiene automáticamente su propia página en `/<categoria>/<slug>`
 (el slug es el nombre del archivo sin `.md`).
+
+**Nota:** desde el Día 3, Matemáticas lee de Supabase — sin las variables
+de entorno configuradas (ver abajo), esa categoría no va a mostrar nada.
+Física, Programación, Electrónica y Proyectos siguen funcionando con
+archivos, sin necesitar nada adicional.
+
+## Configurar Supabase (necesario solo para Matemáticas)
+
+1. Crea un proyecto en [supabase.com](https://supabase.com).
+2. En **Project → SQL Editor**, corre el contenido de `supabase/schema.sql`
+   — crea la tabla `entradas` con RLS (lectura pública, escritura solo con
+   la llave de servicio).
+3. Copia `.env.local.example` a `.env.local` y llena los 3 valores con los
+   que encuentras en **Project Settings → API** de tu proyecto de
+   Supabase (`.env.local` nunca se sube a git).
+4. Corre `npm run migrate:matematicas` — lee `content/matematicas/*.md` y
+   los sube a la tabla `entradas`.
 
 ## Historial de avance (qué se hizo, y por qué)
 
@@ -85,6 +101,27 @@ duplicó tal cual a Física, Programación, Electrónica y Proyectos: mismo
 Cada una arrancó con una entrada de ejemplo que explica el sistema de
 contenido, y después se sumó una primera entrada real y específica del
 tema de cada categoría (ver "Contenido publicado hasta ahora" abajo).
+
+**Día 3 — base de datos (Supabase), migrando Matemáticas como prueba**
+Los archivos `.md` funcionan bien para escribir, pero no permiten
+consultar por tag, ordenar de formas distintas, ni prepararse para un
+buscador (Día 4) sin leer y parsear todos los archivos cada vez. Se creó
+una tabla `entradas` en Supabase (`categoria`, `slug`, `titulo`, `fecha`,
+`resumen`, `contenido`, `tags[]`) con RLS activado: cualquiera puede
+*leer* (el sitio es público), pero solo el script de migración, usando la
+llave de servicio, puede escribir — la llave pública (anon) nunca tiene
+permiso de insertar o editar.
+
+Se migró **solo Matemáticas** como prueba, dejando las otras 4 categorías
+en archivos por ahora — así, si algo sale mal con la base de datos, no se
+rompe todo el sitio de una vez. `lib/content-db.ts` replica las mismas
+funciones que `lib/content.ts` (`getEntradasDB`, `getEntradaPorSlugDB`),
+pero consultando Supabase en vez del sistema de archivos; las páginas de
+Matemáticas se actualizaron para usarlas, y la home ahora combina ambas
+fuentes (Matemáticas desde la base de datos, el resto desde archivos) al
+calcular los contadores. También se agregó `tags` al frontmatter de las
+entradas existentes, ya que es uno de los campos que pedía guardar de
+forma estructurada.
 
 ## Contenido publicado hasta ahora
 
@@ -148,14 +185,19 @@ tema de cada categoría (ver "Contenido publicado hasta ahora" abajo).
 - [x] Física, Programación, Electrónica y Proyectos conectadas con el
       mismo patrón (lista + página individual)
 
-**Día 3 — base de datos**
-- Conectar Supabase (o el proveedor que prefieras) para guardar entradas,
-  tags y fecha de forma estructurada en vez de archivos planos
-- Migrar el contenido de Matemáticas como prueba
+**Día 3 — base de datos** ✅
+- [x] Tabla `entradas` en Supabase (`supabase/schema.sql`), con RLS de
+      solo lectura pública
+- [x] Script de migración (`npm run migrate:matematicas`)
+- [x] Matemáticas conectada a Supabase (`lib/content-db.ts`); las otras 4
+      categorías siguen en archivos por ahora
+- [ ] Migrar Física, Programación, Electrónica y Proyectos igual que
+      Matemáticas, cuando quieras
 
 **Día 4 — API y búsqueda**
 - Ruta de API (`app/api/entradas/route.ts`) que devuelva entradas
-  filtradas por categoría o tag
+  filtradas por categoría o tag (ahora que Matemáticas tiene `tags`, es
+  el punto natural para empezar)
 - Buscador simple en el frontend que consuma esa API
 
 **Día 5 — pulido y despliegue**

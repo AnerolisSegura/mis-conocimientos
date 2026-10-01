@@ -11,8 +11,17 @@ const glow = [
   "group-hover:border-pink-400/80 group-hover:shadow-[0_0_40px_rgba(244,114,182,0.25)]",
 ];
 
-export default function Home() {
-  const totalEntradas = getTotalEntradas(categorias.map((c) => c.slug));
+export default async function Home() {
+  const conteos = await Promise.all(
+    categorias.map(async (cat) => {
+      const entradas =
+        cat.slug === "matematicas"
+          ? await getEntradasDB(cat.slug)
+          : getEntradas(cat.slug);
+      return { slug: cat.slug, count: entradas.length };
+    })
+  );
+  const totalEntradas = conteos.reduce((n, c) => n + c.count, 0);
 
   return (
     <main className="relative z-10 mx-auto max-w-6xl px-6 py-24">
@@ -36,7 +45,8 @@ export default function Home() {
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         {categorias.map((cat, i) => {
-          const numEntradas = conteos.find((c) => c.slug === cat.slug)?.count ?? 0;
+          const numEntradas =
+            conteos.find((c) => c.slug === cat.slug)?.count ?? 0;
           return (
             <Link
               key={cat.slug}
