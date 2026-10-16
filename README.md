@@ -166,6 +166,11 @@ forma estructurada.
   un solo reto real, y por qué esta categoría va a documentar el proceso
   completo y no solo el resultado final.
 
+**Help Desk**
+- *Help Desk: importancia del análisis y criterio para la selección de stack* — qué es, importancia de 
+  la selección de stack, criterio, implementación, costos.
+  
+
 ## Hoja de ruta (paso a paso, un bloque por día)
 
 **Día 1 — fundación + frontend** ✅
@@ -175,7 +180,7 @@ forma estructurada.
 - [x] Header estilo IDE: racha de estudio (localStorage) y paleta de
       comandos con Ctrl+K
 - [x] Repo inicializado y subido a GitHub
-- [ ] Cambia el link de GitHub en `Header.tsx` por el de tu repo real
+- [x] Cambia el link de GitHub en `Header.tsx` por el de tu repo real
 
 **Día 2 — contenido dinámico** ✅
 - [x] Entradas movidas a archivos `.md` individuales en `content/<categoria>/`
