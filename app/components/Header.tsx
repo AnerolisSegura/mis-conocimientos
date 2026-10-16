@@ -89,7 +89,7 @@ export default function Header() {
             Racha: <strong className="text-pink-400">{streak}</strong> días
           </div>
           <a
-            href="https://github.com"
+            href="https://github.com/AnerolisSegura/mis-conocimientos.git"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-1.5 rounded-lg border border-slate-800 bg-slate-900/90 px-4 py-1.5 text-slate-200 shadow-md transition hover:border-pink-500/50 hover:text-pink-400"
