@@ -30,4 +30,9 @@ export const categorias: Categoria[] = [
     nombre: "Proyectos",
     descripcion: "SATU-Mecatrónico y otros proyectos aplicados, documentados en curso.",
   },
+  {
+    slug: "helpdesk",
+    nombre: "Helpdesk",
+    descripcion: "Help Desk y herramientas",
+  },
 ];
