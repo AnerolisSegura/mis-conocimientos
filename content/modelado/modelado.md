@@ -1,0 +1,3 @@
+---
+titulo: "MODELADO"
+resumen: "En esta sección puedes modelar fórmulas y sistemas escribiendo simplemente lo que quieres, como si le dieras un prompt a una IA. Describes el problema en lenguaje natural, por ejemplo “calcula la corriente en un circuito con una fuente de 12 V y dos resistencias en serie de 330 Ω y 470 Ω”, y el sistema lo traduce a las ecuaciones correspondientes, las resuelve y muestra el resultado paso a paso. La idea es que no necesites escribir código ni recordar la sintaxis exacta: solo explicar con tus palabras qué quieres modelar. Por eso la dejo documentada: pasar de una idea escrita a un modelo funcional es el puente entre pensar y construir."

@@ -35,4 +35,9 @@ export const categorias: Categoria[] = [
     nombre: "Helpdesk",
     descripcion: "Help Desk y Stack",
   },
+   {
+    slug: "modelado",
+    nombre: "Modelado",
+    descripcion: "En esta sección puedes modelar fórmulas y sistemas escribiendo simplemente lo que quieres, como si le dieras un prompt a una IA",
+  },
 ];
