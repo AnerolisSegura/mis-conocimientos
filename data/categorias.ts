@@ -40,4 +40,9 @@ export const categorias: Categoria[] = [
     nombre: "Modelado",
     descripcion: "En esta sección puedes modelar fórmulas y sistemas escribiendo simplemente lo que quieres, como si le dieras un prompt a una IA",
   },
+  {
+    slug: "teoria-de-control",
+    nombre: "Teoría de Control",
+    descripcion: "Conceptos y aplicaciones de la teoría de control en sistemas mecatrónicos.La teoría de control estudia cómo hacer que un sistema se comporte como queremos, usando realimentación para mantenerlo estable y preciso.",
+  },
 ];
