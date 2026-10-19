@@ -24,7 +24,7 @@ export default async function EntradaPage({
   return (
     <main className="relative z-10 mx-auto max-w-3xl px-6 pb-24 pt-16">
       <Link
-        href="/fisica"
+        href="/helpdesk"
         className="font-mono text-xs text-slate-500 transition hover:text-pink-400"
       >
         ← {categoria.nombre}

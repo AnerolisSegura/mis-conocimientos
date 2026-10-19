@@ -33,6 +33,6 @@ export const categorias: Categoria[] = [
   {
     slug: "helpdesk",
     nombre: "Helpdesk",
-    descripcion: "Help Desk y herramientas",
+    descripcion: "Help Desk y Stack",
   },
 ];
